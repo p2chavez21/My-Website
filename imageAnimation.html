@@ -1,0 +1,49 @@
+<html>
+<head>
+<script language="JavaScript">
+var srcList = ["images/imgAnim/sunset1.jpg", 
+               "images/imgAnim/sunset2.jpg", 
+               "images/imgAnim/sunset3.jpg", 
+               "images/imgAnim/sunset4.jpg",  
+               "images/imgAnim/sunset5.jpg",  
+               "images/imgAnim/sunset6.jpg",  
+               "images/imgAnim/sunset7.jpg",  
+               "images/imgAnim/sunset8.jpg"];		   
+var index = 0;
+var loopCount = 0;
+    
+var time;
+
+function begin()
+{    
+    index = index +1;
+
+    if( index > 7)
+    {
+        index = 0;
+        loopCount = loopCount+1;
+    }
+       document.getElementById("myPic").src = srcList[index];
+    
+    if(loopCount < 5)
+       {
+          time = setTimeout("begin()", 100);
+        }
+}
+</script>
+</head>
+<body bgcolor = "#CCCCFF">
+<font face = "Comic Sans MS" color="black">
+<center>
+<h1>POSTCARD</h1>
+    <p>Click here to <a href="index.html">return to my home page. </a>
+<br/><br/>
+        
+<img id="myPic" src="images/imgAnim/sunset1.jpg" width="600"/>
+
+<br/><br/>
+<input type="button" value="Start!" onclick="begin()">
+
+</center>
+</body>
+</html>
