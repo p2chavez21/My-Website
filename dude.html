@@ -1,0 +1,122 @@
+<html>
+<head>
+<script language="JavaScript">
+var direction
+var timer;
+var left1, left2, left3;
+    
+function start()
+{
+document.onkeydown=keyListener;
+}
+    
+function keyListener()
+{
+    if(window.event.keyCode > 0)// Tests if any key has been pressed
+    { 
+        left1 = document.all.bkgnd1.style.left; 
+        left1 = parseInt(left1);
+		left2 = document.all.bkgnd2.style.left; 
+        left2 = parseInt(left2);
+        left3 = document.all.bkgnd3.style.left; 
+        left3 = parseInt(left3);
+    }
+
+     var leftPos
+ if(window.event.keyCode > 0)// Tests if any key has been pressed
+ { leftPos = document.all.dude.style.left; 
+   leftPos = parseInt(leftPos);
+ }
+     var rightPos
+ if(window.event.keyCode > 0)// Tests if any key has been pressed
+ { rightPos = document.all.dude.style.right; 
+   rightPos = parseInt(rightPos);
+ }
+
+ if(window.event.keyCode == 65) //A key to move left
+  {
+    document.getElementById('dude').innerHTML='<img src="images/dudeLT.gif" width="100">';
+    direction = 180;
+      leftPos = leftPos - 10;
+   document.all.dude.style.left = leftPos;
+      left1 = left1 + 7; // adds 7 to the current value of left1, 2, & 3.
+	left2 = left2 + 7;
+	left3 = left3 + 7;
+
+ 
+  }
+  if(window.event.keyCode == 68) //D key to move right
+   {
+     document.getElementById('dude').innerHTML='<img src="images/dudeRT.gif" width="100">';
+    direction = 0;
+       leftPos = leftPos + 10;
+   document.all.dude.style.left = leftPos;
+       left1 = left1 - 7;
+	left2 = left2 - 7;
+	left3 = left3 - 7;  
+  }
+    
+reposition();
+    
+document.all.bkgnd1.style.left = left1;
+document.all.bkgnd2.style.left = left2;
+document.all.bkgnd3.style.left = left3;
+
+}
+     function reposition()
+{
+    if(left1<-1280) // 1st background is completely off the left edge of the screen.
+    {
+        left1 = left3+1280;
+    }
+    if(left2<-1280) // 2nd background is completely off the left edge of the screen.
+    {
+        left2 = left1+1280;
+    }
+    if(left3<-1280) // 3rd background is completely off the left edge of the screen.
+    {
+        left3 = left2+1280;
+    }
+    if(left1>2560) // 1st background is completely off the right edge of the screen.
+    {
+        left1 = left2-1280;
+    }
+    if(left2>2560) // 2nd background is completely off the right edge of the screen.
+    {
+        left2 = left3-1280;
+    }
+    if(left3>2560) // 3rd background is completely off the right edge of the screen.
+    {
+        left3 = left1-1280;
+    }
+}
+
+</script>
+</head>
+<body bgcolor="#FDFD96" >
+
+<center>
+	<h1> Paper Town </h1>
+	<input type="button" value="Click" onClick="start()"/>
+</center>
+
+<div id=bkgnd1 style="position:absolute; top:100; left:-1280">
+	<img src="images/scrollingbackdrop.jpg">
+</div>
+
+<div id=bkgnd2 style="position:absolute; top:100; left:0">
+	<img src="images/scrollingbackdrop.jpg">
+</div>
+
+
+<div id=bkgnd3 style="position:absolute; top:100; left:1280">
+	<img src="images/scrollingbackdrop.jpg">
+</div>
+
+    
+<div id="dude" style="position:absolute; left:50; top:450;">
+	<img src="images/dudeRT.gif" width="100"/>
+</div>
+    
+</body>
+</html>
